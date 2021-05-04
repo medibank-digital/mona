@@ -21,12 +21,14 @@ export default defineConfig({
         'lit/static-html.js',
         'lit/directive.js',
         'twind',
+        'twind/sheets',
       ],
       output: {
         globals: {
           lit: 'Lit',
           'lit/decorators.js': 'LitDecoratorsJs',
           twind: 'Twind',
+          'twind/sheets': 'TwindSheets',
         },
       },
     },

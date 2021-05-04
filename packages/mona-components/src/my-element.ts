@@ -1,9 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { create, cssomSheet } from 'twind';
-
-const sheet = cssomSheet({ target: new CSSStyleSheet() });
-const { tw } = create({ sheet });
+import { TailwindStylesController } from './utils/TailwindStylesController';
 
 /**
  * An example element.
@@ -22,8 +19,11 @@ export class MyElement extends LitElement {
         max-width: 800px;
       }
     `,
-    sheet.target,
   ];
+
+  private __stylesController: TailwindStylesController = new TailwindStylesController(
+    this,
+  );
 
   /**
    * The name to say "Hello" to.
@@ -39,7 +39,9 @@ export class MyElement extends LitElement {
 
   render() {
     return html`
-      <h1 class=${tw('font-bold')}>Hello, ${this.name}!</h1>
+      <h1 class=${this.__stylesController.tw('font-bold')}>
+        Hello, ${this.name}!
+      </h1>
       <button @click=${this._onClick} part="button">
         Click Count: ${this.count}
       </button>
