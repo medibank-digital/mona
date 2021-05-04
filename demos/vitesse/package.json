@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "@dblechoc/mona-components": "*",
-    "lit": "2.0.0-rc.1"
+    "lit": "2.0.0-rc.1",
+    "twind": "0.16.13"
   },
   "devDependencies": {
     "@dblechoc/plugin-lit-refresh": "0.0.6",

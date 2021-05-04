@@ -20,11 +20,13 @@ export default defineConfig({
         'lit/html.js',
         'lit/static-html.js',
         'lit/directive.js',
+        'twind',
       ],
       output: {
         globals: {
           lit: 'Lit',
           'lit/decorators.js': 'LitDecoratorsJs',
+          twind: 'Twind',
         },
       },
     },

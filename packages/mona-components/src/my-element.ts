@@ -1,5 +1,9 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { create, cssomSheet } from 'twind';
+
+const sheet = cssomSheet({ target: new CSSStyleSheet() });
+const { tw } = create({ sheet });
 
 /**
  * An example element.
@@ -9,14 +13,17 @@ import { customElement, property } from 'lit/decorators.js';
  */
 @customElement('my-element')
 export class MyElement extends LitElement {
-  static styles = css`
-    :host {
-      display: block;
-      border: solid 1px yellow;
-      padding: 16px;
-      max-width: 800px;
-    }
-  `;
+  static styles = [
+    css`
+      :host {
+        display: block;
+        border: solid 1px yellow;
+        padding: 16px;
+        max-width: 800px;
+      }
+    `,
+    sheet.target,
+  ];
 
   /**
    * The name to say "Hello" to.
@@ -32,7 +39,7 @@ export class MyElement extends LitElement {
 
   render() {
     return html`
-      <h1>Hello, ${this.name}!</h1>
+      <h1 class=${tw('font-bold')}>Hello, ${this.name}!</h1>
       <button @click=${this._onClick} part="button">
         Click Count: ${this.count}
       </button>
