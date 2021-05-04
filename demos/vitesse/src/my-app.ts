@@ -13,7 +13,8 @@ export class MyApp extends LitElement {
   render() {
     return html`
       <my-element id="test" as="section">
-        <p>This is child content</p>
+        <p>This is first child content</p>
+        <p>This is second child content</p>
       </my-element>
     `;
   }

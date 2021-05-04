@@ -6,6 +6,7 @@ import { spread } from './utils/LitHelper';
 import { SpreadController } from './utils/SpreadController';
 import { ElementTagName, validElementTagNames } from './utils/HTMLTypes';
 import { assertTagNameIsAllowed } from './utils/AssertHelpers';
+import { UniqueSlotController } from './utils/UniqueSlotController';
 
 /**
  * An example element.
@@ -32,6 +33,10 @@ export class MyElement extends LitElement {
 
   private __spreadController: SpreadController = new SpreadController(this);
 
+  private __uniqueSlotController: UniqueSlotController = new UniqueSlotController(
+    this,
+  );
+
   /**
    * The name to say "Hello" to.
    */
@@ -45,6 +50,19 @@ export class MyElement extends LitElement {
   count = 0;
 
   @property({ type: String, reflect: true }) as: ElementTagName = 'div';
+
+  private __renderChildren() {
+    return Array.from(this.children).map((_, index) => {
+      return html`
+        <div>
+          <slot
+            name=${this.__uniqueSlotController.getSlotIdentifier(index)}
+            @slotchange=${this.__uniqueSlotController.onSlotChange}
+          ></slot>
+        </div>
+      `;
+    });
+  }
 
   render() {
     assertTagNameIsAllowed(
@@ -66,7 +84,9 @@ export class MyElement extends LitElement {
         <button @click=${this._onClick} part="button">
           Click Count: ${this.count}
         </button>
-        <slot></slot>
+        <div class=${this.__stylesController.tw(
+          'space-y-12',
+        )}>${this.__renderChildren()}</div>
       </${tag}>
     `;
   }
