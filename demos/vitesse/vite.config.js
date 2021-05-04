@@ -1,14 +1,11 @@
 import { defineConfig } from 'vite';
-import litElementRefresh from '@dblechoc/plugin-lit-refresh';
+import LitElementRefresh from '@dblechoc/plugin-lit-refresh';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import { resolve } from 'path';
 
 export default defineConfig({
-  optimizeDeps: {
-    include: [],
-  },
   plugins: [
-    litElementRefresh(),
+    LitElementRefresh(),
     process.env.NODE_ENV === 'production'
       ? nodeResolve()
       : nodeResolve({ exportConditions: ['development'] }),

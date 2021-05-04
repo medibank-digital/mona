@@ -1,0 +1,40 @@
+{
+  "name": "@dblechoc/mona-components",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "./dist/mona-components.umd.js",
+  "module": "./dist/mona-components.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/mona-components.es.js",
+      "require": "./dist/mona-components.umd.js"
+    },
+    "./dist/style.css": "./dist/style.css",
+    "./src/*": "./src/*/*.tsx"
+  },
+  "files": [
+    "src",
+    "dist"
+  ],
+  "types": "dist/index.d.ts",
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "scripts": {
+    "dev:types": "tsc --watch --project tsconfig.build.json --declaration --emitDeclarationOnly --esModuleInterop --outDir dist",
+    "dev:lib": "vite build -w",
+    "dev": "run-p dev:*",
+    "build:types": "tsc --project tsconfig.build.json --declaration --emitDeclarationOnly --esModuleInterop --outDir dist",
+    "build:lib": "vite build",
+    "build": "run-p build:*"
+  },
+  "peerDependencies": {
+    "lit": "^2.0.0-rc.1"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "11.2.1",
+    "lit": "2.0.0-rc.1",
+    "rollup": "2.46.0",
+    "vite": "2.2.3"
+  }
+}

@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@dblechoc/plugin-lit-refresh@0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@dblechoc/plugin-lit-refresh/-/plugin-lit-refresh-0.0.5.tgz#3882b96ee3258a51abdec759025485607c4534c3"
-  integrity sha512-uvSg39iWN6OFvN/pBsDLX4XHJTpISdXT6snShiUrWXlC2ET8cpcAhSc/162ftOsplP2VYLOVD5sPbsYGDzAL0Q==
+"@dblechoc/plugin-lit-refresh@0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@dblechoc/plugin-lit-refresh/-/plugin-lit-refresh-0.0.6.tgz#bfd46555531240e7992f60d34733550e157d8b51"
+  integrity sha512-5LEhX5ZTDPHq93qwqzy15ZVqzMbcGr9SqbjjiFDD+ixqRq/92ZciMzDlzPDtrOep8BhLlfXr4OIbfvsstA7Q3A==
 
 "@lit/reactive-element@^1.0.0-rc.1":
   version "1.0.0-rc.1"
@@ -497,7 +497,7 @@ resolve@^1.10.0, resolve@^1.19.0:
     is-core-module "^2.2.0"
     path-parse "^1.0.6"
 
-rollup@^2.38.5:
+rollup@2.46.0, rollup@^2.38.5:
   version "2.46.0"
   resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.46.0.tgz#8cacf89d2ee31a34755f1af40a665168f592b829"
   integrity sha512-qPGoUBNl+Z8uNu0z7pD3WPTABWRbcOwIrO/5ccDJzmrtzn0LVf6Lj91+L5CcWhXl6iWf23FQ6m8Jkl2CmN1O7Q==
