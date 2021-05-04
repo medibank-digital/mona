@@ -12,7 +12,7 @@ import '@dblechoc/mona-components';
 export class MyApp extends LitElement {
   render() {
     return html`
-      <my-element id="test">
+      <my-element id="test" as="section">
         <p>This is child content</p>
       </my-element>
     `;

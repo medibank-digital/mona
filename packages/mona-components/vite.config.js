@@ -28,6 +28,7 @@ export default defineConfig({
           lit: 'Lit',
           'lit/decorators.js': 'LitDecoratorsJs',
           'lit/directive.js': 'LitDirectivesJs',
+          'lit/static-html.js': 'LitStaticHtmlJs',
           twind: 'Twind',
           'twind/sheets': 'TwindSheets',
         },

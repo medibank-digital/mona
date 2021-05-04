@@ -1,8 +1,11 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { unsafeStatic, html } from 'lit/static-html.js';
 import { TailwindStylesController } from './utils/TailwindStylesController';
 import { spread } from './utils/LitHelper';
 import { SpreadController } from './utils/SpreadController';
+import { ElementTagName, validElementTagNames } from './utils/HTMLTypes';
+import { assertTagNameIsAllowed } from './utils/AssertHelpers';
 
 /**
  * An example element.
@@ -41,13 +44,22 @@ export class MyElement extends LitElement {
   @property({ type: Number })
   count = 0;
 
+  @property({ type: String, reflect: true }) as: ElementTagName = 'div';
+
   render() {
+    assertTagNameIsAllowed(
+      this.as,
+      (validElementTagNames as unknown) as string[],
+    );
+
+    const tag = unsafeStatic(this.as);
+
     const attributesToSpread = this.__spreadController.buildSpreadAttributesIgnoring(
-      ['style', 'class', 'slot', 'name', 'count'],
+      ['as', 'style', 'class', 'slot', 'name', 'count'],
     );
 
     return html`
-      <div ...=${spread(attributesToSpread)}>
+      <${tag} ...=${spread(attributesToSpread)}>
         <h1 class=${this.__stylesController.tw('font-bold')}>
           Hello, ${this.name}!
         </h1>
@@ -55,7 +67,7 @@ export class MyElement extends LitElement {
           Click Count: ${this.count}
         </button>
         <slot></slot>
-      </div>
+      </${tag}>
     `;
   }
 
