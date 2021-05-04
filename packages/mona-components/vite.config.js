@@ -27,6 +27,7 @@ export default defineConfig({
         globals: {
           lit: 'Lit',
           'lit/decorators.js': 'LitDecoratorsJs',
+          'lit/directive.js': 'LitDirectivesJs',
           twind: 'Twind',
           'twind/sheets': 'TwindSheets',
         },

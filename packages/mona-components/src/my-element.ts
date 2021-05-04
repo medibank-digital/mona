@@ -1,6 +1,8 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { TailwindStylesController } from './utils/TailwindStylesController';
+import { spread } from './utils/LitHelper';
+import { SpreadController } from './utils/SpreadController';
 
 /**
  * An example element.
@@ -25,6 +27,8 @@ export class MyElement extends LitElement {
     this,
   );
 
+  private __spreadController: SpreadController = new SpreadController(this);
+
   /**
    * The name to say "Hello" to.
    */
@@ -38,14 +42,20 @@ export class MyElement extends LitElement {
   count = 0;
 
   render() {
+    const attributesToSpread = this.__spreadController.buildSpreadAttributesIgnoring(
+      ['style', 'class', 'slot', 'name', 'count'],
+    );
+
     return html`
-      <h1 class=${this.__stylesController.tw('font-bold')}>
-        Hello, ${this.name}!
-      </h1>
-      <button @click=${this._onClick} part="button">
-        Click Count: ${this.count}
-      </button>
-      <slot></slot>
+      <div ...=${spread(attributesToSpread)}>
+        <h1 class=${this.__stylesController.tw('font-bold')}>
+          Hello, ${this.name}!
+        </h1>
+        <button @click=${this._onClick} part="button">
+          Click Count: ${this.count}
+        </button>
+        <slot></slot>
+      </div>
     `;
   }
 
