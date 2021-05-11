@@ -27,15 +27,13 @@ export class MyElement extends LitElement {
     `,
   ];
 
-  private __stylesController: TailwindStylesController = new TailwindStylesController(
-    this,
-  );
+  private __stylesController: TailwindStylesController =
+    new TailwindStylesController(this);
 
   private __spreadController: SpreadController = new SpreadController(this);
 
-  private __uniqueSlotController: UniqueSlotController = new UniqueSlotController(
-    this,
-  );
+  private __uniqueSlotController: UniqueSlotController =
+    new UniqueSlotController(this);
 
   /**
    * The name to say "Hello" to.
@@ -67,14 +65,20 @@ export class MyElement extends LitElement {
   render() {
     assertTagNameIsAllowed(
       this.as,
-      (validElementTagNames as unknown) as string[],
+      validElementTagNames as unknown as string[],
     );
 
     const tag = unsafeStatic(this.as);
 
-    const attributesToSpread = this.__spreadController.buildSpreadAttributesIgnoring(
-      ['as', 'style', 'class', 'slot', 'name', 'count'],
-    );
+    const attributesToSpread =
+      this.__spreadController.buildSpreadAttributesIgnoring([
+        'as',
+        'style',
+        'class',
+        'slot',
+        'name',
+        'count',
+      ]);
 
     return html`
       <${tag} ...=${spread(attributesToSpread)}>

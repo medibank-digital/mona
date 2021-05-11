@@ -29,14 +29,14 @@
     "build": "run-p build:*"
   },
   "peerDependencies": {
-    "lit": "^2.0.0-rc.1",
+    "lit": "^2.0.0-rc.2",
     "twind": "^0.16.0"
   },
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "11.2.1",
-    "lit": "2.0.0-rc.1",
-    "rollup": "2.46.0",
+    "@rollup/plugin-node-resolve": "13.0.0",
+    "lit": "2.0.0-rc.2",
+    "rollup": "2.47.0",
     "twind": "0.16.13",
-    "vite": "2.2.3"
+    "vite": "2.2.4"
   }
 }
