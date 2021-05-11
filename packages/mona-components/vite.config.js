@@ -7,7 +7,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
-      name: 'Sub',
+      name: 'MonaComponents',
     },
     emptyOutDir: false,
     rollupOptions: {
